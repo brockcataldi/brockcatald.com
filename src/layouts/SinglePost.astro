@@ -1,0 +1,103 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Base from "./Base.astro";
+
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, publishDate, updatedDate } = Astro.props;
+---
+
+<Base {title} {description}>
+  <article class="post">
+    <header class="post__header">
+      <div class="post__date">
+        <FormattedDate date={publishDate} />
+      </div>
+      <h1 class="post__title">{title}</h1>
+    </header>
+    <div class="post__body">
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<style is:global>
+  .post {
+    max-width: var(--max-outer);
+  }
+
+  .post__date,
+  .post__title {
+    margin: 0;
+  }
+
+  .post,
+  .post__body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l);
+    width: 100%;
+  }
+
+  .post__header {
+    max-width: var(--max-inner);
+    width: 100%;
+    padding: var(--space-6xl) 0;
+  }
+
+  .post__body > h1,
+  .post__body > h2,
+  .post__body > h3,
+  .post__body > h4,
+  .post__body > h5,
+  .post__body > h6,
+  .post__body > p,
+  .post__body > ol,
+  .post__body > ul {
+    max-width: var(--max-inner);
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .post__body > img {
+    max-width: var(--max-outer);
+    width: 100%;
+    height: auto;
+    margin: 0;
+    box-sizing: border-box;
+	border-radius: 0.5rem;
+	overflow: hidden;
+  }
+
+  .post__body table {
+    max-width: var(--max-inner);
+    width: 100%;
+  }
+
+  .post__body > code {
+    padding: var(--space-3xs) var(--space-2xs);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: var(--step-0);
+  }
+
+  .post__body > pre {
+    padding: var(--space-m);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: var(--max-inner);
+    box-sizing: border-box;
+    font-size: var(--step-0);
+  }
+
+  .post__body > pre > code {
+    all: unset;
+  }
+</style>
