@@ -27,10 +27,20 @@ const posts = (await getCollection('articles')).sort(
 		margin: 0;
 		padding: 0;
 		width: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-direction: column;
+		gap: var(--space-m);
 	}
 
 	li {
 		width: 100%;
+		margin: 0;
+	}
+
+	h3 {
+		font-size: var(--step-3);
 	}
 
 	h3,

@@ -13,12 +13,19 @@ const { title, href, text } = Astro.props;
 <section>
 	<header>
 		<h2>{title}</h2>
-		{href && text ? <Button href={href} text={text} /> : null}
 	</header>
 
 	<div>
 		<slot />
 	</div>
+
+	{
+		href && text ? (
+			<footer>
+				<Button href={href} text={text} />
+			</footer>
+		) : null
+	}
 </section>
 
 <style>
@@ -31,6 +38,14 @@ const { title, href, text } = Astro.props;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-direction: row;
+	}
+
+	footer {
+		margin-top: var(--space-m);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		flex-direction: row;
 	}
 </style>

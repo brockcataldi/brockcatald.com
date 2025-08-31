@@ -1,5 +1,5 @@
 :root {
-	--background: #050b0d;
+	--background: #081114;
 
 	--neutrals-100: #141d20;
 	--neutrals-200: #242c2e;
@@ -136,7 +136,7 @@ td {
 }
 
 thead tr {
-	border-bottom: 1px solid var(--neutrals-1100);
+	border-bottom: 1px solid var(--neutrals-1200);
 }
 
 th {
@@ -147,11 +147,11 @@ th {
 }
 
 tbody tr {
-	background-color: var(--neutrals-200);
+	background-color: var(--neutrals-100);
 }
 
 tbody tr:nth-child(odd) {
-	background-color: var(--neutrals-300);
+	background-color: var(--neutrals-200);
 }
 
 td {

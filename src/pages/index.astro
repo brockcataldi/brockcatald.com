@@ -1,18 +1,24 @@
 ---
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import Base from '../layouts/Base.astro';
 
+import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import RollArticles from '../components/RollArticles.astro';
+import RollWork from '../components/RollWork.astro';
 ---
 
 <Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<main>
-		<Hero> Design Fixated Developer </Hero>
+	<Hero>Design Fixated Developer</Hero>
 
-		<Section title="Featured Articles">
-			<RollArticles />
-		</Section>
-	</main>
+	<Section title="Featured Work" href="/work" text="View All Work">
+		<RollWork />
+	</Section>
+	<Section
+		title="Featured Articles"
+		href="/articles"
+		text="View All Articles"
+	>
+		<RollArticles />
+	</Section>
 </Base>
