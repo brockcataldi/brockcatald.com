@@ -1,103 +1,119 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Base from "./Base.astro";
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
 
-import FormattedDate from "../components/FormattedDate.astro";
+import HeroPost from '../components/HeroPost.astro';
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<'articles'>['data'];
 
 const { title, description, publishDate, updatedDate } = Astro.props;
 ---
 
 <Base {title} {description}>
-  <article class="post">
-    <header class="post__header">
-      <div class="post__date">
-        <FormattedDate date={publishDate} />
-      </div>
-      <h1 class="post__title">{title}</h1>
-    </header>
-    <div class="post__body">
-      <slot />
-    </div>
-  </article>
+	<article class="post">
+		<HeroPost title={title} publishDate={publishDate} />
+		<div class="post__body">
+			<slot />
+		</div>
+	</article>
 </Base>
 
 <style is:global>
-  .post {
-    max-width: var(--max-outer);
-  }
+	.post__date,
+	.post__title {
+		margin: 0;
+	}
 
-  .post__date,
-  .post__title {
-    margin: 0;
-  }
+	.post,
+	.post__body {
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-l);
+		width: 100%;
+	}
 
-  .post,
-  .post__body {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-l);
-    width: 100%;
-  }
+	.post__body {
+		a {
+			font-family: var(--font-heading);
+			letter-spacing: 1px;
+			color: var(--oranges-900);
+			transition: 200ms color ease-in-out;
+			text-decoration: none;
+			position: relative;
+			display: inline-block;
+		}
 
-  .post__header {
-    max-width: var(--max-inner);
-    width: 100%;
-    padding: var(--space-6xl) 0;
-  }
+		a:hover {
+			color: var(--oranges-1000);
+		}
 
-  .post__body > h1,
-  .post__body > h2,
-  .post__body > h3,
-  .post__body > h4,
-  .post__body > h5,
-  .post__body > h6,
-  .post__body > p,
-  .post__body > ol,
-  .post__body > ul {
-    max-width: var(--max-inner);
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-  }
+		a:focus {
+			color: var(--oranges-1000);
+		}
 
-  .post__body > img {
-    max-width: var(--max-outer);
-    width: 100%;
-    height: auto;
-    margin: 0;
-    box-sizing: border-box;
-	border-radius: 0.5rem;
-	overflow: hidden;
-  }
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul {
+			max-width: var(--max-inner);
+			text-align: left;
+			width: 100%;
+			margin: 0;
+			box-sizing: border-box;
+		}
 
-  .post__body table {
-    max-width: var(--max-inner);
-    width: 100%;
-  }
+		h2 {
+			margin-top: var(--space-l);
+		}
 
-  .post__body > code {
-    padding: var(--space-3xs) var(--space-2xs);
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-    font-size: var(--step-0);
-  }
+		h3 {
+			margin-top: var(--space-m);
+		}
 
-  .post__body > pre {
-    padding: var(--space-m);
-    border-radius: 0.5rem;
-    width: 100%;
-    max-width: var(--max-inner);
-    box-sizing: border-box;
-    font-size: var(--step-0);
-  }
+		h4 {
+			margin-top: var(--space-m);
+		}
 
-  .post__body > pre > code {
-    all: unset;
-  }
+		img {
+			max-width: var(--max-outer);
+			width: 100%;
+			height: auto;
+			margin: 0;
+			box-sizing: border-box;
+			border-radius: 0.5rem;
+			overflow: hidden;
+		}
+
+		table {
+			max-width: var(--max-inner);
+			width: 100%;
+		}
+
+		code {
+			padding: var(--space-3xs) var(--space-2xs);
+			border-radius: 0.5rem;
+			box-sizing: border-box;
+			font-size: var(--step-0);
+		}
+
+		pre {
+			padding: var(--space-m);
+			border-radius: 0.5rem;
+			width: 100%;
+			max-width: var(--max-inner);
+			box-sizing: border-box;
+			font-size: var(--step-0);
+		}
+
+		pre > code {
+			all: unset;
+		}
+	}
 </style>

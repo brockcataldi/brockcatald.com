@@ -1,0 +1,38 @@
+---
+interface Props {
+	text: string;
+	href: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<a href={href}>{text}</a>
+
+<style>
+	a {
+		padding: var(--space-2xs) var(--space-l);
+		border-radius: var(--space-m);
+		font-family: var(--font-heading);
+		letter-spacing: 1px;
+		font-size: var(--step-0);
+		position: relative;
+		color: var(--neutrals-1100);
+		background-color: var(--neutrals-100);
+		border: 1px solid transparent;
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
+	}
+
+	a:hover,
+	a:focus {
+		color: var(--oranges-1000);
+		background-color: var(--oranges-100);
+	}
+
+	a::after {
+		content: unset;
+	}
+</style>

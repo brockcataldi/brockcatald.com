@@ -1,0 +1,23 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+import Base from '../../layouts/Base.astro';
+
+import Hero from '../../components/Hero.astro';
+import RollArticles from '../../components/RollArticles.astro';
+---
+
+<Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main>
+		<Hero subtitle="Thoughts on nothing"> Articles </Hero>
+		<div>
+			<RollArticles />
+		</div>
+	</main>
+</Base>
+
+<style>
+	div {
+		padding-top: var(--space-2xl);
+	}
+</style>

@@ -1,0 +1,36 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+	title: string;
+	href?: string;
+	text?: string;
+}
+
+const { title, href, text } = Astro.props;
+---
+
+<section>
+	<header>
+		<h2>{title}</h2>
+		{href && text ? <Button href={href} text={text} /> : null}
+	</header>
+
+	<div>
+		<slot />
+	</div>
+</section>
+
+<style>
+	section {
+		width: 100%;
+	}
+
+	header {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+</style>

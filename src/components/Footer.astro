@@ -3,31 +3,51 @@ const today = new Date();
 ---
 
 <footer>
-  <div>
-    <p>Built with <a href="https://astro.build/" target="_blank">Astro</a></p>
-    <p>&copy; {today.getFullYear()} Brock Cataldi. All rights reserved.</p>
-  </div>
+	<div>
+		<p>
+			Built with <a href="https://astro.build/" target="_blank">Astro</a>
+		</p>
+		<p>&copy; {today.getFullYear()} Brock Cataldi. All rights reserved.</p>
+	</div>
 </footer>
 
 <style>
-  footer {
-    width: 100%;
-    padding: var(--space-3xl) var(--space-s) var(--space-l) var(--space-s);
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
+	footer {
+		width: 100%;
+		padding: var(--space-3xl) var(--space-s) var(--space-l);
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
 
-  div {
-    margin: 0 auto;
-    max-width: var(--max-outer);
-    border-top: 2px solid var(--neutrals-1100);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: var(--space-s) 0;
-  }
+	div {
+		margin: 0 auto;
+		max-width: var(--max-outer);
+		border-top: 1px solid var(--neutrals-1200);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: var(--space-s) 0;
+	}
 
-  p {
-    margin: 0;
-  }
+	p {
+		margin: 0;
+	}
+
+	a {
+		font-family: var(--font-heading);
+		letter-spacing: 1px;
+		color: var(--oranges-900);
+		transition: 200ms color ease-in-out;
+		text-decoration: none;
+		position: relative;
+		display: inline-block;
+	}
+
+	a:hover {
+		color: var(--oranges-1100);
+	}
+
+	a:focus {
+		color: var(--oranges-1100);
+	}
 </style>

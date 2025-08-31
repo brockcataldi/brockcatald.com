@@ -1,15 +1,48 @@
 ---
-import { SITE_TITLE } from "../consts";
-import HeaderLink from "./HeaderLink.astro";
+import Link from './Link.astro';
+import LogoStandard from '../assets/logo-standard.svg';
 ---
 
 <header>
-  <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-    </div>
-  </nav>
+	<a href="/">
+		<LogoStandard />
+		<span class="sr-only">Brock Cataldi</span>
+	</a>
+
+	<nav>
+		<Link href="/about">About</Link>
+		<Link href="/articles">Articles</Link>
+		<Link href="/work">Work</Link>
+	</nav>
 </header>
+
+<style>
+	header {
+		max-width: var(--max-outer);
+		border-bottom: 1px solid var(--neutrals-1200);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: var(--background);
+		box-sizing: border-box;
+		z-index: 1000;
+	}
+
+	header svg {
+		width: 75px;
+		padding: var(--space-3xs) var(--space-s);
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-end;
+	}
+</style>

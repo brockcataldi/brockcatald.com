@@ -1,0 +1,37 @@
+---
+interface Props {
+	subtitle?: string;
+}
+
+const { subtitle } = Astro.props;
+---
+
+<header>
+	<div>
+		<h1>
+			<slot />
+		</h1>
+		{subtitle ? <p>{subtitle}</p> : null}
+	</div>
+</header>
+
+<style>
+	header {
+		width: 100%;
+		padding: var(--space-5xl) 0;
+	}
+
+	div {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	h1 {
+		margin: 0 0 var(--space-2xs);
+		font-size: var(--step-7);
+	}
+
+	p {
+		margin: 0;
+	}
+</style>

@@ -1,0 +1,115 @@
+---
+title: 'Designing my portfolio'
+description: 'An introspection into the trials and tribulations of building a personal website.'
+publishDate: 'August 30, 2025'
+---
+
+import ImagePost from '../../components/ImagePost.astro';
+
+import LeonardoProject from '../../assets/blog/creating-my-portfolio/brockcataldi.com.svg';
+
+In my career, I've been involved in building a ton of websites, but it's usually a team effort with an established brand already in place. This project, however, is from the ground up—and it feels like a Sisyphean task.
+
+That being said, it helps when you build things in the right order. Usually, I shoot for a content-first strategy. But this time? I didn't do all that. I just shot from the hip and started with design—because that's fun as hell. Still, no matter how out of order things get, I firmly believe that before you start a site, you need to identify its goals and purpose.
+
+## Goals & Purpose
+
+- **Exist.** I've owned this domain since 2016. I briefly threw together a site right after college, but since 2019 it's been nothing more than a dead domain. Time to change that.
+- **Showcase.** The site's purpose is to house my favorite works, experiments that someone might find useful (which I'll group into a “projects” post type), and articles like this one—where I can shout into the wind about things I feel strongly about.
+- **Astro.** Ever since I discovered JAMStack and the frameworks behind it, [Astro](https://astro.build/) seemed like the perfect fit for a blog framework.
+
+## Abstracts
+
+Now comes the scavenger hunt portion of the build: identifying the design tokens for my personal brand.
+
+### Typography & Spacing
+
+About a year ago, I read _Better Web Typography for a Better Web_ by Matej Latin. It pulled me deep into the intricacies of typography—pairings, how designers and developers calculate sizing and spacing, and everything in between.
+
+After some research, I settled on **Gloock** for headings and **Sen** for body text. For spacing and sizing, I decided to use [Utopia](https://utopia.fyi/), a fluid typography system where sizes are clamped based on the viewport, with upper and lower bounds tied to a modular scale. Let me tell you—it is _fucking dope_. I don't even remember how I stumbled across it, but it deserves a shoutout.
+
+The whole strategy has aged gracefully since I was first introduced to the concept. Compare that to this mess:
+
+```css
+h1 {
+	font-size: calc(32px + (52 - 32) * ((100vw - 300px) / (1920 - 300)));
+}
+```
+
+That was an experimental line I tried before the `clamp()` function was widely available. The results were, in the simplest terms, fucking ass—which is why I was so hesitant about fluid typography at first.
+
+#### Typography Settings
+
+| Fields     | Min Viewport | Max Viewport |
+| :--------- | :----------- | :----------- |
+| Width      | 360px        | 1240px       |
+| Font Size  | 16px         | 18px         |
+| Type Scale | 1.2          | 1.25         |
+
+#### Spacing Settings
+
+I didn't actually change anything from the typography.
+
+| Fields    | Min Viewport | Max Viewport |
+| :-------- | :----------- | :----------- |
+| Width     | 360px        | 1240px       |
+| Font Size | 16px         | 18px         |
+
+### Iconography
+
+I don't plan to have a ton of icons so I'll just use [Feather Icons](https://feathericons.com/) and download only the ones I need.
+
+### Colors
+
+Since I was starting from absolute zero, my first draft in Figma was just a simple black-and-white comp. But eventually, I needed some actual colors, so I turned to the trusty [Coolors](https://coolors.co/) generator.
+
+My highly scientific process went like this:
+
+1. Smash the spacebar until something looks promising.
+2. Slap it on the comp.
+3. Immediately regret everything and return to spacebar smashing.
+
+After several rounds of that emotional rollercoaster, I finally landed on some colors I actually liked: a slightly off-black and a lighter orange for an accent. From there, I ran them through [Leonardo](https://leonardocolor.io/) to generate gradient shades, giving me a nice palette of neutrals to work with.
+
+<ImagePost
+	src={LeonardoProject}
+	alt="Color values from Leonardo"
+	caption="The output of Leonardo from both colors."
+/>
+
+## Design
+
+### Identify Needs
+
+Step #1 of design, is having a vague idea of what you're going to actually design, so I broke down each component and page I'll need to have a proper portfolio.
+I can't stand freelancing so I am not going to have a form, but if someone really wants to get in contact with me I'll have my LinkedIn linked.
+
+#### Pages
+
+- Homepage
+- 404 Page
+- Articles "Archive"
+- Work "Archive"
+- Single Article
+- Single Work
+- About Page
+
+#### Components
+
+- Header (Navigation)
+- Footer
+- Hero
+- Featured Work Roll
+- Work Roll
+- Featured Archives Roll
+- Archives Roll
+
+More to be added after probably.
+
+## The first "make it fancy"
+
+While I was coming up with a Logo on my Girlfriend's iPad (she's got the pencil it's badass), I came up with two logos
+which are just signatures but one is a lot more formal, a standard signature and another that's way better.
+
+This then sent me on a thought process of creating a portfolio, a very standard well designed website, as I've been doing.
+But then in me fashion, add a togglable red pen effect, where there are scribbles adding more of my language, doodles, etc to match my new logo.
