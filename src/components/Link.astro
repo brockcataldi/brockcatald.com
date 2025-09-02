@@ -29,6 +29,8 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 		font-size: var(--step-1);
 		color: var(--neutrals-1200);
 		border: 1px solid transparent;
+		background-color: var(--neutrals-100);
+		border-color: var(--neutrals-100);
 	}
 
 	a {
@@ -39,8 +41,8 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 	}
 
 	span {
-		background-color: var(--neutrals-100);
-		border-color: var(--neutrals-100);
+		background-color: transparent;
+		border-color: transparent;
 	}
 
 	a:hover,

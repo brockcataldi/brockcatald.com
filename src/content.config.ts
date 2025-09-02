@@ -14,14 +14,14 @@ const articles = defineCollection({
 
 const work = defineCollection({
 	loader: glob({ base: './src/content/work', pattern: '**/*.{md,mdx}' }),
-	// Type-check frontmatter using a schema
 	schema: () =>
 		z.object({
 			title: z.string(),
+			type: z.string(),
 			description: z.string(),
 			publishDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 		}),
 });
 
-export const collections = { articles };
+export const collections = { articles, work };

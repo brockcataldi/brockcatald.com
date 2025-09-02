@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('articles')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const posts = (
+	await getCollection('work')).sort(
+		(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+	);
 ---
 
 <ul>
@@ -11,9 +13,12 @@ const posts = (await getCollection('articles')).sort(
 		posts.map((post) => (
 			<li>
 				<a href={`/work/${post.id}/`}>
-					<img
+					<span>{post.data.type}</span>
+					<Image
 						src="https://dummyimage.com/490x490/000/fff"
 						alt={post.data.title}
+						inferSize={true}
+						loading={"lazy"}
 					/>
 					<div>
 						<h3 class="title">{post.data.title}</h3>
@@ -30,7 +35,7 @@ const posts = (await getCollection('articles')).sort(
 		padding: 0;
 		list-style-type: none;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(318px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(318px, 490px));
 		gap: var(--space-m);
 	}
 
@@ -46,9 +51,26 @@ const posts = (await getCollection('articles')).sort(
 		border: 1px solid transparent;
 		color: var(--neutrals-1200);
 		height: 100%;
+		position: relative;
 		transition:
 			200ms border-color ease-in-out,
 			200ms color ease-in-out;
+	}
+
+	span {
+		display: block;
+		position: absolute;
+		border-radius: var(--space-m);
+		padding: var(--space-3xs) var(--space-xs);
+		top: var(--space-s);
+		left: var(--space-s);
+		background-color: var(--neutrals-100);
+		font-size: var(--step--1);
+		border: 1px solid transparent;
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
 	}
 
 	a:hover,
@@ -59,6 +81,12 @@ const posts = (await getCollection('articles')).sort(
 
 	a:hover div,
 	a:focus div {
+		border-color: var(--oranges-1100);
+		background-color: var(--oranges-100);
+	}
+
+	a:hover span,
+	a:focus span {
 		border-color: var(--oranges-1100);
 		background-color: var(--oranges-100);
 	}
@@ -74,14 +102,14 @@ const posts = (await getCollection('articles')).sort(
 		background-color: var(--neutrals-100);
 		padding: var(--space-m);
 		border-top: 1px solid transparent;
-		transition:
-			200ms border-color ease-in-out,
-			200ms background-color ease-in-out;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
 		gap: var(--space-2xs);
+		transition:
+			200ms border-color ease-in-out,
+			200ms background-color ease-in-out;
 	}
 
 	h3 {

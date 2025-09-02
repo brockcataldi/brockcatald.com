@@ -14,11 +14,9 @@ const { title, href, text } = Astro.props;
 	<header>
 		<h2>{title}</h2>
 	</header>
-
 	<div>
 		<slot />
 	</div>
-
 	{
 		href && text ? (
 			<footer>
@@ -33,12 +31,20 @@ const { title, href, text } = Astro.props;
 		width: 100%;
 	}
 
+	section:not(:last-child) {
+		padding-bottom: var(--space-xl);
+	}
+
 	header {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		flex-direction: row;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-m);
 	}
 
 	footer {

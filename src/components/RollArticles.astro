@@ -1,22 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
-import FormattedDate from './FormattedDate.astro';
+import RollArticle from './RollArticle.astro';
 
-const posts = (await getCollection('articles')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const posts = (
+	await getCollection('articles')).sort(
+		(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+	);
 ---
 
 <ul>
 	{
 		posts.map((post) => (
 			<li>
-				<a href={`/articles/${post.id}/`}>
-					<h3 class="title">{post.data.title}</h3>
-					<p>{post.data.description}</p>
-					<FormattedDate date={post.data.publishDate} />
-				</a>
+				<RollArticle
+					href={`/articles/${post.id}`}
+					title={post.data.title}
+					description={post.data.description}
+					publishDate={post.data.publishDate}
+				/>
 			</li>
 		))
 	}
@@ -37,46 +39,5 @@ const posts = (await getCollection('articles')).sort(
 	li {
 		width: 100%;
 		margin: 0;
-	}
-
-	h3 {
-		font-size: var(--step-3);
-	}
-
-	h3,
-	p {
-		margin: 0;
-	}
-
-	a {
-		padding: var(--space-m);
-		width: 100%;
-		box-sizing: border-box;
-		color: white;
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-xs);
-		border-radius: var(--space-s);
-		background-color: var(--neutrals-100);
-		border: 1px solid transparent;
-		transition:
-			200ms border-color ease-in-out,
-			200ms color ease-in-out,
-			200ms background-color ease-in-out;
-	}
-
-	a time {
-		font-size: var(--step--1);
-	}
-
-	a:after {
-		content: none;
-	}
-
-	a:hover,
-	a:focus {
-		border-color: var(--oranges-1100);
-		background-color: var(--oranges-100);
-		color: var(--oranges-1100);
 	}
 </style>
