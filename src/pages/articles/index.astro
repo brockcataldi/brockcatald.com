@@ -1,16 +1,16 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { SITE_DESCRIPTION } from '../../consts';
 
 import Base from '../../layouts/Base.astro';
 
 import Hero from '../../components/Hero.astro';
-import RollArticles from '../../components/RollArticles.astro';
+import ArticleList from '../../components/ArticleList.astro';
 ---
 
-<Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Base title={'Articles'} description={SITE_DESCRIPTION}>
 	<Hero subtitle="Thoughts on nothing"> Articles </Hero>
 	<div>
-		<RollArticles />
+		<ArticleList />
 	</div>
 </Base>
 

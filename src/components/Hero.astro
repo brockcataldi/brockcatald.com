@@ -24,14 +24,22 @@ const { subtitle } = Astro.props;
 	div {
 		width: 100%;
 		margin: 0 auto;
+		max-width: var(--max-inner);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: var(--space-xs);
 	}
 
 	h1 {
-		margin: 0 0 var(--space-2xs);
+		margin: 0;
 		font-size: var(--step-7);
+		text-align: center;
 	}
 
 	p {
 		margin: 0;
+		text-align: center;
 	}
 </style>

@@ -2,10 +2,9 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-const posts = (
-	await getCollection('work')).sort(
-		(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-	);
+const posts = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <ul>
@@ -18,7 +17,7 @@ const posts = (
 						src="https://dummyimage.com/490x490/000/fff"
 						alt={post.data.title}
 						inferSize={true}
-						loading={"lazy"}
+						loading={'eager'}
 					/>
 					<div>
 						<h3 class="title">{post.data.title}</h3>

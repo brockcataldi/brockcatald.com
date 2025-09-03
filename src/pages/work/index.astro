@@ -4,16 +4,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
-import RollWork from '../../components/RollWork.astro';
+import WorkRoll from '../../components/WorkRoll.astro';
 
 const posts = (await getCollection('articles')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
-<Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Base title={'Work'} description={SITE_DESCRIPTION}>
 	<Hero subtitle="Projects & Experiments"> Work </Hero>
 	<div>
-		<RollWork />
+		<WorkRoll />
 	</div>
 </Base>

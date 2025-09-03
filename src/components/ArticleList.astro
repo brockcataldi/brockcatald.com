@@ -1,19 +1,18 @@
 ---
 import { getCollection, render } from 'astro:content';
 
-import RollArticle from './RollArticle.astro';
+import ArticleListing from './ArticleListing.astro';
 
-const posts = (
-	await getCollection('articles')).sort(
-		(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-	);
+const posts = (await getCollection('articles')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
-<ul>
+<ul class="article__list">
 	{
 		posts.map((post) => (
 			<li>
-				<RollArticle
+				<ArticleListing
 					href={`/articles/${post.id}`}
 					title={post.data.title}
 					description={post.data.description}

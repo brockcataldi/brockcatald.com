@@ -1,0 +1,66 @@
+---
+import ArticleMeta from './ArticleMeta.astro';
+
+interface Props {
+	href: string;
+	title: string;
+	description: string;
+	publishDate: Date;
+}
+
+const { href, title, description, publishDate } = Astro.props;
+---
+
+<a href={href}>
+	<h3 class="article__title">{title}</h3>
+	<p>{description}</p>
+
+	<ArticleMeta publishDate={publishDate} readingTime={'30 min'} />
+</a>
+
+<style>
+	h3 {
+		font-size: var(--step-3);
+	}
+
+	h3,
+	p {
+		margin: 0;
+	}
+
+	a {
+		padding: var(--space-m);
+		width: 100%;
+		box-sizing: border-box;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+		border-radius: var(--space-s);
+		background-color: var(--neutrals-100);
+		border: 1px solid transparent;
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
+	}
+
+	a:after {
+		content: none;
+	}
+
+	a:hover,
+	a:focus {
+		border-color: var(--oranges-1100);
+		background-color: var(--oranges-100);
+		color: var(--oranges-1100);
+	}
+</style>
+
+<style is:global>
+	a:hover .article__meta li,
+	a:focus .article__meta li {
+		border-color: var(--oranges-1100);
+		background-color: var(--oranges-200);
+	}
+</style>

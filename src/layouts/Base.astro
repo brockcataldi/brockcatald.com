@@ -11,14 +11,14 @@ import Header from '../components/Header.astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 
 interface Props {
-	title: string;
+	title?: string;
 	description: string;
 	image?: ImageMetadata;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title, description, image = FallbackImage } = Astro.props;
+const t = title ? `${title} // ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <html lang="en">
@@ -31,7 +31,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 		<link
 			rel="alternate"
 			type="application/rss+xml"
-			title={SITE_TITLE}
+			title={t}
 			href={new URL('rss.xml', Astro.site)}
 		/>
 		<meta name="generator" content={Astro.generator} />
@@ -40,21 +40,21 @@ const { title, description, image = FallbackImage } = Astro.props;
 		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Primary Meta Tags -->
-		<title>{title}</title>
-		<meta name="title" content={title} />
+		<title>{t}</title>
+		<meta name="title" content={t} />
 		<meta name="description" content={description} />
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
-		<meta property="og:title" content={title} />
+		<meta property="og:title" content={t} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image.src, Astro.url)} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
+		<meta property="twitter:title" content={t} />
 		<meta property="twitter:description" content={description} />
 		<meta
 			property="twitter:image"
