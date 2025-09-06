@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-import Base from '../../layouts/Base.astro';
-import Hero from '../../components/Hero.astro';
-import WorkRoll from '../../components/WorkRoll.astro';
+import Base from '../../layouts/base.astro';
+import Hero from '../../components/hero.astro';
+import WorkRoll from '../../components/work-roll.astro';
 
 const posts = (await getCollection('articles')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()

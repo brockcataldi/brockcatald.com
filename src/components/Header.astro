@@ -1,76 +1,20 @@
 ---
-import { gsap } from 'gsap';
-
-import Link from './Link.astro';
 import LogoStandard from '../assets/logo-standard.svg';
+import NavigationLink from './navigation-link.astro';
 ---
 
 <header>
 	<a href="/">
 		<LogoStandard />
 		<span class="sr-only">Brock Cataldi</span>
+
+		<nav>
+			<NavigationLink href="/about">About</NavigationLink>
+			<NavigationLink href="/articles">Articles</NavigationLink>
+			<NavigationLink href="/work">Work</NavigationLink>
+		</nav>
 	</a>
-
-	<button id="toggle">
-		<i>
-			<span id="bar-0"></span>
-			<span id="bar-1"></span>
-			<span id="bar-2"></span>
-		</i>
-		<strong> Menu </strong>
-	</button>
-
-	<nav>
-		<Link href="/about">About</Link>
-		<Link href="/articles">Articles</Link>
-		<Link href="/work">Work</Link>
-	</nav>
 </header>
-<script>
-	import { gsap } from 'gsap';
-
-	if (typeof window !== 'undefined') {
-		window.addEventListener('DOMContentLoaded', () => {
-			const toggle = document.querySelector('#toggle');
-			const barZero = document.querySelector('#bar-0');
-			const barOne = document.querySelector('#bar-1');
-			const barTwo = document.querySelector('#bar-2');
-
-			const toggleTimeline = gsap.timeline({ paused: true });
-			toggleTimeline.to(
-				toggle,
-				{
-					onStart: () => toggle?.classList.add('open'),
-					onReverseComplete: () => toggle?.classList.remove('open'),
-				},
-				0
-			);
-			toggleTimeline.to(
-				barZero,
-				{ top: '9px', rotate: '45deg', duration: 0.2 },
-				0
-			);
-			toggleTimeline.to(barOne, { opacity: 0, duration: 0.2 }, 0);
-			toggleTimeline.to(
-				barTwo,
-				{ top: '9px', rotate: '-45deg', duration: 0.2 },
-				0
-			);
-
-			let open = false;
-
-			toggle?.addEventListener('click', () => {
-				if (!open) {
-					toggleTimeline.play();
-					open = true;
-				} else {
-					toggleTimeline.reverse();
-					open = false;
-				}
-			});
-		});
-	}
-</script>
 <style>
 	header {
 		max-width: var(--max-outer);
@@ -95,77 +39,6 @@ import LogoStandard from '../assets/logo-standard.svg';
 		color: var(--neutrals-1200);
 	}
 
-	button {
-		appearance: none;
-		border: 1px solid transparent;
-		background-color: var(--neutrals-100);
-		color: var(--neutrals-1200);
-		padding: var(--space-s) var(--space-s);
-		color: var(--neutrals-1200);
-		border: 1px solid var(--neutrals-100);
-		background-color: var(--neutrals-100);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: row;
-		gap: var(--space-s);
-		transition:
-			200ms border-color ease-in-out,
-			200ms color ease-in-out,
-			200ms background-color ease-in-out;
-			display: none;
-	}
-
-	button:hover,
-	/* button:focus, */
-	button.open {
-		border-color: var(--oranges-1100);
-		background-color: var(--oranges-100);
-		color: var(--oranges-1100);
-	}
-
-	button:hover span,
-	/* button:focus span, */
-	button.open span {
-		background-color: var(--oranges-1100);
-	}
-
-	i {
-		width: 32px;
-		height: 20px;
-		display: block;
-		position: relative;
-	}
-
-	span {
-		width: 32px;
-		height: 2px;
-		background-color: var(--neutrals-1200);
-		display: block;
-		position: absolute;
-		left: 0;
-		border-radius: var(--space-s);
-		transition: 200ms background-color ease-in-out;
-	}
-
-	span:nth-child(1) {
-		top: 0;
-	}
-
-	span:nth-child(2) {
-		top: 9px;
-	}
-
-	span:nth-child(3) {
-		top: 18px;
-	}
-
-	strong {
-		font-family: var(--font-heading);
-		font-weight: 400;
-		font-size: var(--step-1);
-	}
-
 	/* nav {
 		width: 100%;
 		height: 100vh;
@@ -178,16 +51,12 @@ import LogoStandard from '../assets/logo-standard.svg';
 		justify-content: center;
 	} */
 
-	/* @media screen and (min-width: 501px) {
-		button {
-			display: none;
-		} */
-
+	@media screen and (min-width: 501px) {
 		nav {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			justify-content: flex-end;
 		}
-	/* } */
+	}
 </style>

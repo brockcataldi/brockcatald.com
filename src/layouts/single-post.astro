@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Base from './Base.astro';
 
-import PostHero from '../components/PostHero.astro';
+import Base from './base.astro';
+import PostHero from '../components/post-hero.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
@@ -11,7 +11,11 @@ const { title, description, publishDate, updatedDate } = Astro.props;
 
 <Base {title} {description}>
 	<article class="post">
-		<PostHero title={title} publishDate={publishDate} />
+		<PostHero
+			title={title}
+			publishDate={publishDate}
+			readingTime={'10 minutes'}
+		/>
 		<div class="post__body">
 			<slot />
 		</div>

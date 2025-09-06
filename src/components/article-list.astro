@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 
-import ArticleListing from './ArticleListing.astro';
+import ArticleListing from './article-listing.astro';
 
 const posts = (await getCollection('articles')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
