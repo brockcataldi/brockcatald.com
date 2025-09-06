@@ -1,0 +1,196 @@
+<button class="navigation__toggle">
+	<i class="hamburger">
+		<span class="bar"></span>
+		<span class="bar"></span>
+		<span class="bar"></span>
+	</i>
+	<span class="sr-only">Open Menu</span>
+	<span class="label">
+		<span class="word">
+			<span class="letter">M</span>
+			<span class="letter">e</span>
+			<span class="letter">n</span>
+			<span class="letter">u</span>
+		</span>
+		<span class="word">
+			<span class="letter">C</span>
+			<span class="letter">l</span>
+			<span class="letter">o</span>
+			<span class="letter">s</span>
+			<span class="letter">e</span>
+		</span>
+	</span>
+</button>
+<script>
+	const button = document.querySelector('.navigation__toggle');
+	const sr = button?.querySelector('sr-only');
+
+	button?.addEventListener('click', () => {
+		const result = document.body.classList.toggle('navigation--open');
+
+		if(sr){
+			sr.textContent = result ? 'Close Menu' : 'Open Menu'
+		}
+
+	});
+</script>
+<style is:global>
+	.navigation__toggle {
+		appearance: none;
+		background-color: var(--neutrals-100);
+		padding: calc(var(--space-s) + 2px) calc(var(--space-s) + 2px);
+		color: var(--neutrals-1200);
+		border: 1px solid var(--neutrals-100);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		flex-direction: row;
+		gap: var(--space-s);
+		cursor: pointer;
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
+	}
+
+	@media only screen and (min-width: 501px) {
+		.navigation__toggle {
+			display: none;
+		}
+	}
+
+	.navigation__toggle:hover,
+	.navigation--open .navigation__toggle {
+		border-color: var(--oranges-1100);
+		background-color: var(--oranges-100);
+		color: var(--oranges-1100);
+	}
+
+	.navigation__toggle:hover .bar,
+	.navigation--open .navigation__toggle .bar {
+		background-color: var(--oranges-1100);
+	}
+
+	.hamburger {
+		width: 32px;
+		height: 20px;
+		display: block;
+		position: relative;
+	}
+
+	.bar {
+		width: 32px;
+		height: 2px;
+		position: absolute;
+		background-color: var(--neutrals-1200);
+		left: 0;
+	}
+
+	.bar:nth-child(1) {
+		top: 0px;
+		transition: transform 200ms ease-in-out;
+	}
+
+	.bar:nth-child(2) {
+		top: 9px;
+		opacity: 1;
+		transition: opacity 200ms ease-in-out;
+	}
+
+	.bar:nth-child(3) {
+		top: 18px;
+		transition: transform 200ms ease-in-out;
+	}
+
+	.label {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		height: var(--step-1);
+
+		width: 75px;
+	}
+
+	.word {
+		display: flex;
+		font-family: var(--font-heading);
+		font-weight: 400;
+		font-size: var(--step-1);
+		line-height: 1;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		top: 0;
+		position: absolute;
+
+		width: 75px;
+	}
+
+	.letter {
+		position: relative;
+	}
+
+	.word:nth-child(1) .letter {
+		top: 0;
+		transition: transform 200ms ease-in-out;
+	}
+
+	.word:nth-child(1) .letter:nth-child(1) {
+		transition-delay: 0ms;
+	}
+
+	.word:nth-child(1) .letter:nth-child(2) {
+		transition-delay: 50ms;
+	}
+
+	.word:nth-child(1) .letter:nth-child(3) {
+		transition-delay: 100ms;
+	}
+
+	.word:nth-child(1) .letter:nth-child(4) {
+		transition-delay: 150ms;
+	}
+
+	.word:nth-child(2) .letter {
+		top: var(--step-1);
+		transition: transform 200ms ease-in-out;
+	}
+
+	.word:nth-child(2) .letter:nth-child(1) {
+		transition-delay: 0ms;
+	}
+
+	.word:nth-child(2) .letter:nth-child(2) {
+		transition-delay: 50ms;
+	}
+
+	.word:nth-child(2) .letter:nth-child(3) {
+		transition-delay: 100ms;
+	}
+
+	.word:nth-child(2) .letter:nth-child(4) {
+		transition-delay: 150ms;
+	}
+
+	.word:nth-child(2) .letter:nth-child(5) {
+		transition-delay: 200ms;
+	}
+
+	.navigation--open .bar:nth-child(1) {
+		transform: translateY(9px) rotate(45deg);
+	}
+
+	.navigation--open .bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.navigation--open .bar:nth-child(3) {
+		transform: translateY(-9px) rotate(-45deg);
+	}
+
+	.navigation--open .word:nth-child(1) .letter,
+	.navigation--open .word:nth-child(2) .letter {
+		transform: translateY(calc(var(--step-1) * -1));
+	}
+</style>

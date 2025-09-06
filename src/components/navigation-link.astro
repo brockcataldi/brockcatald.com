@@ -11,44 +11,87 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 
 {
 	!isActive ? (
-		<a href={href} class:list={[className, { link: true }]} {...props}>
+		<a href={href} class={'navigation__link'} {...props}>
 			<slot />
 		</a>
 	) : (
-		<span class:list={[className, { link: true }]}>
+		<span class={'navigation__link'}>
 			<slot />
 		</span>
 	)
 }
 
-<style>
-	a,
-	span {
+<style is:global>
+	.navigation__link {
 		font-family: var(--font-heading);
-		padding: var(--space-s) var(--space-s);
-		font-size: var(--step-1);
+		font-size: var(--step-6);
 		color: var(--neutrals-1200);
-		border: 1px solid transparent;
-		background-color: var(--neutrals-100);
-		border-color: var(--neutrals-100);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-20px);
 	}
 
-	a {
-		transition:
-			200ms border-color ease-in-out,
-			200ms color ease-in-out,
-			200ms background-color ease-in-out;
-	}
-
-	span {
-		background-color: transparent;
-		border-color: transparent;
-	}
-
-	a:hover,
-	a:focus {
+	span.navigation__link {
 		color: var(--oranges-1100);
-		background-color: var(--oranges-100);
-		border-color: var(--oranges-1100);
+	}
+
+	.navigation__link:nth-child(1) {
+		transition:
+			opacity 200ms ease 250ms,
+			transform 200ms ease 250ms,
+			visibility 0s linear 250ms;
+	}
+
+	.navigation__link:nth-child(2) {
+		transition:
+			opacity 200ms ease 300ms,
+			transform 200ms ease 300ms,
+			visibility 0s linear 300ms;
+	}
+
+	.navigation__link:nth-child(3) {
+		transition:
+			opacity 200ms ease 350ms,
+			transform 200ms ease 350ms,
+			visibility 0s linear 350ms;
+	}
+
+	.navigation--open .navigation__link {
+		transform: translateY(0px);
+		opacity: 1;
+		visibility: visible;
+	}
+
+	@media only screen and (min-width: 501px) {
+		.navigation__link {
+			padding: var(--space-s) var(--space-s);
+			font-size: var(--step-1);
+			background-color: var(--neutrals-100);
+			border: 1px solid var(--neutrals-100);
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0px);
+			transition: unset;
+		}
+
+		a.navigation__link {
+			transition:
+				200ms border-color ease-in-out,
+				200ms color ease-in-out,
+				200ms background-color ease-in-out;
+		}
+
+		span.navigation__link {
+			background-color: transparent;
+			color: var(--oranges-1100);
+			border-color: transparent;
+		}
+
+		a.navigation__link:hover,
+		a.navigation__link:focus {
+			color: var(--oranges-1100);
+			background-color: var(--oranges-100);
+			border-color: var(--oranges-1100);
+		}
 	}
 </style>
