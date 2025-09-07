@@ -6,16 +6,17 @@ interface Props {
 	title: string;
 	description: string;
 	publishDate: Date;
+	readingTime?: string;
 }
 
-const { href, title, description, publishDate } = Astro.props;
+const { href, title, description, publishDate, readingTime } = Astro.props;
 ---
 
 <a href={href}>
 	<h3 class="article__title">{title}</h3>
 	<p>{description}</p>
 
-	<ArticleMeta publishDate={publishDate} readingTime={'30 min'} />
+	<ArticleMeta publishDate={publishDate} readingTime={readingTime} />
 </a>
 
 <style>

@@ -6,7 +6,7 @@ import ClockIcon from '../assets/clock.svg';
 
 interface Props {
 	publishDate: Date;
-	readingTime: string;
+	readingTime?: string;
 }
 
 const { publishDate, readingTime } = Astro.props;
@@ -19,10 +19,14 @@ const { publishDate, readingTime } = Astro.props;
 			<FormattedDate date={publishDate} />
 		</p>
 	</li>
-	<li>
-		<ClockIcon />
-		<p>{readingTime}</p>
-	</li>
+	{
+		readingTime ? (
+			<li>
+				<ClockIcon />
+				<p>{readingTime}</p>
+			</li>
+		) : null
+	}
 </ul>
 
 <style>

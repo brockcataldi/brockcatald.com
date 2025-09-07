@@ -1,0 +1,121 @@
+---
+import CodePen from '../assets/codepen.svg';
+import GitHub from '../assets/github.svg';
+import LinkedIn from '../assets/linkedin.svg';
+---
+
+<ul class="navigation__socials">
+	<li class="navigation__social">
+		<a
+			href="https://codepen.io/brck"
+			target="_blank"
+			class="navigation__social__link"
+		>
+			<CodePen class="navigation__social__icon" />
+			<span class="sr-only">CodePen @brck</span>
+		</a>
+	</li>
+	<li class="navigation__social">
+		<a
+			href="https://github.com/brockcataldi"
+			target="_blank"
+			class="navigation__social__link"
+		>
+			<GitHub class="navigation__social__icon" />
+			<span class="sr-only">Github @brockcataldi</span>
+		</a>
+	</li>
+	<li class="navigation__social">
+		<a
+			href="https://www.linkedin.com/in/brock-cataldi/"
+			target="_blank"
+			class="navigation__social__link"
+		>
+			<LinkedIn class="navigation__social__icon" />
+			<span class="sr-only">LinkedIn @brock-cataldi</span>
+		</a>
+	</li>
+</ul>
+<style is:global>
+	.navigation__socials {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: row;
+		padding: var(--space-m) 0 0;
+		margin: 0;
+		list-style-type: none;
+		gap: var(--space-s);
+	}
+
+	.navigation__social__link {
+		color: var(--neutrals-1200);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-20px);
+	}
+
+	.navigation__social:nth-child(1) .navigation__social__link {
+		transition:
+			opacity 200ms ease 400ms,
+			transform 200ms ease 400ms,
+			visibility 0s linear 400ms;
+	}
+
+	.navigation__social:nth-child(2) .navigation__social__link {
+		transition:
+			opacity 200ms ease 450ms,
+			transform 200ms ease 450ms,
+			visibility 0s linear 450ms;
+	}
+
+	.navigation__social:nth-child(3) .navigation__social__link {
+		transition:
+			opacity 200ms ease 500ms,
+			transform 200ms ease 500ms,
+			visibility 0s linear 500ms;
+	}
+
+	.navigation--open .navigation__social__link {
+		transform: translateY(0px);
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.navigation__social__icon {
+		width: 32px;
+		height: auto;
+	}
+
+	@media screen and (min-width: 580px) {
+		.navigation__socials {
+			justify-content: flex-end;
+			padding: 0;
+			gap: 0;
+		}
+
+		.navigation__social__link {
+			padding: calc(var(--space-s)) var(--space-s);
+			background-color: var(--neutrals-100);
+			border: 1px solid var(--neutrals-100);
+			display: grid;
+			place-items: center;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0px);
+            height: var(--step-1);
+		}
+
+		.navigation__social__icon {
+			width: 24px;
+			height: auto;
+		}
+
+		.navigation__social__link:hover,
+		.navigation__social__link:focus {
+			color: var(--oranges-1100);
+			background-color: var(--oranges-100);
+			border-color: var(--oranges-1100);
+		}
+	}
+</style>

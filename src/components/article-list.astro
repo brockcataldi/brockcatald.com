@@ -1,22 +1,29 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import readingTime from 'reading-time';
 
 import ArticleListing from './article-listing.astro';
 
-const posts = (await getCollection('articles')).sort(
+const posts = (await getCollection('articles'))
+
+const postsRT = posts.map((post) => ({
+	...post,
+   readingTime: (post.body) ? readingTime(post.body).text : undefined
+})).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
 <ul class="article__list">
 	{
-		posts.map((post) => (
+		postsRT.map((post) => (
 			<li>
 				<ArticleListing
 					href={`/articles/${post.id}`}
 					title={post.data.title}
 					description={post.data.description}
 					publishDate={post.data.publishDate}
+					readingTime={post.readingTime}
 				/>
 			</li>
 		))

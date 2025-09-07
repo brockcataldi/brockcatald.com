@@ -5,16 +5,16 @@ import Date from './date.astro';
 interface Props {
 	title: string;
 	publishDate: Date;
-	readingTime: string;
+	readingTime?: string;
 }
 
-const { publishDate, title } = Astro.props;
+const { publishDate, title, readingTime } = Astro.props;
 ---
 
 <header>
 	<div>
 		<h1 class="post__title">{title}</h1>
-		<ArticleMeta publishDate={publishDate} readingTime="10 min" />
+		<ArticleMeta publishDate={publishDate} readingTime={readingTime} />
 	</div>
 </header>
 

@@ -1,5 +1,6 @@
 ---
 import NavigationLink from './navigation-link.astro';
+import NavigationSocials from './navigation-socials.astro';
 import NavigationToggle from './navigation-toggle.astro';
 ---
 
@@ -11,8 +12,8 @@ import NavigationToggle from './navigation-toggle.astro';
 		<NavigationLink href="/articles">Articles</NavigationLink>
 		<NavigationLink href="/work">Work</NavigationLink>
 	</nav>
+	<NavigationSocials />
 </div>
-
 <style is:global>
 	.menu {
 		width: 100%;
@@ -38,7 +39,7 @@ import NavigationToggle from './navigation-toggle.astro';
 		transform: translateX(-100%);
 	}
 
-	@media screen and (min-width: 501px) {
+	@media screen and (min-width: 580px) {
 		.menu {
 			position: relative;
 			height: unset;
@@ -46,6 +47,10 @@ import NavigationToggle from './navigation-toggle.astro';
 			background-color: transparent;
 			right: 0;
 			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			flex-direction: row;
 		}
 
 		.navigation {
@@ -54,6 +59,10 @@ import NavigationToggle from './navigation-toggle.astro';
 			align-items: center;
 			justify-content: flex-end;
 			gap: 0;
+			transition:
+				200ms border-color ease-in-out,
+				200ms color ease-in-out,
+				200ms background-color ease-in-out;
 		}
 
 		.navigation--open .menu {

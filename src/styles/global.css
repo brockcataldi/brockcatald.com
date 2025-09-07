@@ -124,39 +124,6 @@ ol {
 	font-weight: 400;
 }
 
-li:not(:last-child) {
-	margin-bottom: var(--space-xs);
-}
-
-table,
-th,
-td {
-	border-collapse: collapse;
-}
-
-thead tr {
-	border-bottom: 1px solid var(--neutrals-1200);
-}
-
-th {
-	font-weight: 800;
-	font-family: var(--font-heading);
-	padding: var(--space-3xs) var(--space-2xs);
-	letter-spacing: 1px;
-}
-
-tbody tr {
-	background-color: var(--neutrals-100);
-}
-
-tbody tr:nth-child(odd) {
-	background-color: var(--neutrals-200);
-}
-
-td {
-	padding: var(--space-3xs) var(--space-2xs);
-}
-
 a {
 	text-decoration: none;
 }

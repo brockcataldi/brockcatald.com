@@ -6,7 +6,8 @@ import PostHero from '../components/post-hero.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description, publishDate, updatedDate } = Astro.props;
+const { title, description, publishDate, readingTime} = Astro.props;
+
 ---
 
 <Base {title} {description}>
@@ -14,7 +15,7 @@ const { title, description, publishDate, updatedDate } = Astro.props;
 		<PostHero
 			title={title}
 			publishDate={publishDate}
-			readingTime={'10 minutes'}
+			readingTime={readingTime}
 		/>
 		<div class="post__body">
 			<slot />
@@ -73,6 +74,10 @@ const { title, description, publishDate, updatedDate } = Astro.props;
 			box-sizing: border-box;
 		}
 
+		li:not(:last-child) {
+			margin-bottom: var(--space-xs);
+		}
+
 		h2 {
 			margin-top: var(--space-l);
 		}
@@ -98,6 +103,35 @@ const { title, description, publishDate, updatedDate } = Astro.props;
 		table {
 			max-width: var(--max-inner);
 			width: 100%;
+		}
+
+		table,
+		th,
+		td {
+			border-collapse: collapse;
+		}
+
+		thead tr {
+			border-bottom: 1px solid var(--neutrals-1200);
+		}
+
+		th {
+			font-weight: 800;
+			font-family: var(--font-heading);
+			padding: var(--space-3xs) var(--space-2xs);
+			letter-spacing: 1px;
+		}
+
+		tbody tr {
+			background-color: var(--neutrals-100);
+		}
+
+		tbody tr:nth-child(odd) {
+			background-color: var(--neutrals-200);
+		}
+
+		td {
+			padding: var(--space-3xs) var(--space-2xs);
 		}
 
 		code {
