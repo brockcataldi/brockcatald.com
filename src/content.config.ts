@@ -20,8 +20,10 @@ const work = defineCollection({
 			title: z.string(),
 			type: z.string(),
 			description: z.string(),
-			publishDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
+			datePublish: z.coerce.date(),
+			dateUpdate: z.coerce.date().optional(),
+			imageHero: z.string(),
+			imageListing: z.string()
 		}),
 });
 

@@ -1,0 +1,156 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+import Base from './base.astro';
+import WorkHero from '../components/work-hero.astro';
+
+type Props = CollectionEntry<'work'>['data'];
+
+const { title, description, datePublish, imageHero} = Astro.props;
+---
+
+<Base {title} {description}>
+	<article class="post">
+		<WorkHero
+            image={imageHero}
+			title={title}
+			publishDate={datePublish}
+		/>
+		<div class="post__body">
+			<slot />
+		</div>
+	</article>
+</Base>
+
+<style is:global>
+	.post__date,
+	.post__title {
+		margin: 0;
+	}
+
+	.post,
+	.post__body {
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-l);
+		width: 100%;
+	}
+
+	.post__body {
+		a {
+			font-family: var(--font-heading);
+			letter-spacing: 1px;
+			color: var(--oranges-900);
+			transition: 200ms color ease-in-out;
+			text-decoration: none;
+			position: relative;
+			display: inline-block;
+		}
+
+		a:hover {
+			color: var(--oranges-1000);
+		}
+
+		a:focus {
+			color: var(--oranges-1000);
+		}
+
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul {
+			max-width: var(--max-inner);
+			text-align: left;
+			width: 100%;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		li:not(:last-child) {
+			margin-bottom: var(--space-xs);
+		}
+
+		h2 {
+			margin-top: var(--space-l);
+		}
+
+		h3 {
+			margin-top: var(--space-m);
+		}
+
+		h4 {
+			margin-top: var(--space-m);
+		}
+
+		img {
+			max-width: var(--max-outer);
+			width: 100%;
+			height: auto;
+			margin: 0;
+			box-sizing: border-box;
+			border-radius: 0.5rem;
+			overflow: hidden;
+		}
+
+		table {
+			max-width: var(--max-inner);
+			width: 100%;
+		}
+
+		table,
+		th,
+		td {
+			border-collapse: collapse;
+		}
+
+		thead tr {
+			border-bottom: 1px solid var(--neutrals-1200);
+		}
+
+		th {
+			font-weight: 800;
+			font-family: var(--font-heading);
+			padding: var(--space-3xs) var(--space-2xs);
+			letter-spacing: 1px;
+		}
+
+		tbody tr {
+			background-color: var(--neutrals-100);
+		}
+
+		tbody tr:nth-child(odd) {
+			background-color: var(--neutrals-200);
+		}
+
+		td {
+			padding: var(--space-3xs) var(--space-2xs);
+		}
+
+		code {
+			padding: var(--space-3xs) var(--space-2xs);
+			border-radius: 0.5rem;
+			box-sizing: border-box;
+			font-size: var(--step-0);
+		}
+
+		pre {
+			padding: var(--space-m);
+			border-radius: 0.5rem;
+			width: 100%;
+			max-width: var(--max-inner);
+			box-sizing: border-box;
+			font-size: var(--step-0);
+		}
+
+		pre > code {
+			all: unset;
+		}
+	}
+</style>

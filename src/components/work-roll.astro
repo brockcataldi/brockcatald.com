@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+	(a, b) => b.data.datePublish.valueOf() - a.data.datePublish.valueOf()
 );
 ---
 
@@ -14,7 +14,7 @@ const posts = (await getCollection('work')).sort(
 				<a href={`/work/${post.id}/`}>
 					<span>{post.data.type}</span>
 					<Image
-						src="https://dummyimage.com/490x490/000/fff"
+						src={post.data.imageListing}
 						alt={post.data.title}
 						inferSize={true}
 						loading={'eager'}
