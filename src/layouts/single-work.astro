@@ -6,30 +6,31 @@ import WorkHero from '../components/work-hero.astro';
 
 type Props = CollectionEntry<'work'>['data'];
 
-const { title, description, datePublish, imageHero} = Astro.props;
+const { title, description, datePublish, imageHero, links } = Astro.props;
 ---
 
 <Base {title} {description}>
-	<article class="post">
+	<article class="work">
 		<WorkHero
-            image={imageHero}
+			image={imageHero}
 			title={title}
 			publishDate={datePublish}
+			links={links}
 		/>
-		<div class="post__body">
+		<div class="work__body">
 			<slot />
 		</div>
 	</article>
 </Base>
 
 <style is:global>
-	.post__date,
-	.post__title {
+	.work__date,
+	.work__title {
 		margin: 0;
 	}
 
-	.post,
-	.post__body {
+	.work,
+	.work__body {
 		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
@@ -39,7 +40,7 @@ const { title, description, datePublish, imageHero} = Astro.props;
 		width: 100%;
 	}
 
-	.post__body {
+	.work__body {
 		a {
 			font-family: var(--font-heading);
 			letter-spacing: 1px;

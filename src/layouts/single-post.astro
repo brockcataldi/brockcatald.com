@@ -6,8 +6,7 @@ import PostHero from '../components/post-hero.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description, publishDate, readingTime} = Astro.props;
-
+const { title, description, publishDate, readingTime } = Astro.props;
 ---
 
 <Base {title} {description}>

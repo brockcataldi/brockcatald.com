@@ -12,7 +12,7 @@ interface Props {
 const { publishDate, readingTime } = Astro.props;
 ---
 
-<ul class="article__meta">
+<ul>
 	<li>
 		<CalendarIcon />
 		<p>
@@ -51,10 +51,10 @@ const { publishDate, readingTime } = Astro.props;
 		gap: var(--space-2xs);
 		box-sizing: border-box;
 		padding: var(--space-3xs) var(--space-s);
-		background-color: var(--neutrals-200);
 		border-radius: var(--space-m);
+		background-color: transparent;
 		line-height: 1;
-		border: 1px solid var(--neutrals-200);
+		border: 1px solid var(--neutrals-1200);
 		transition:
 			200ms border-color ease-in-out,
 			200ms color ease-in-out,

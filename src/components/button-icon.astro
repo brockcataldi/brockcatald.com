@@ -1,0 +1,71 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import calendar from '../assets/icons/calendar.svg';
+import clock from '../assets/icons/clock.svg';
+import codepen from '../assets/icons/codepen.svg';
+import github from '../assets/icons/github.svg';
+import link from '../assets/icons/Link.svg';
+import linkedin from '../assets/icons/linkedin.svg';
+
+const icons: { [key: string]: AstroComponentFactory } = {
+	calendar,
+	clock,
+	codepen,
+	github,
+	link,
+	linkedin,
+};
+
+interface Props {
+	text: string;
+	href: string;
+	icon: string;
+}
+
+const { text, href, icon } = Astro.props;
+
+const Component = icons[icon] || link;
+---
+
+<a href={href}>
+	<Component />
+	<span>{text}</span>
+</a>
+
+<style>
+	svg {
+		width: 20px;
+		height: auto;
+	}
+	a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		gap: var(--space-xs);
+		padding: var(--space-2xs) var(--space-l);
+		border-radius: var(--space-m);
+		font-family: var(--font-heading);
+		letter-spacing: 1px;
+		font-size: var(--step--1);
+		position: relative;
+		color: var(--neutrals-1200);
+		background-color: var(--neutrals-100);
+		border: 1px solid transparent;
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
+	}
+
+	a:hover,
+	a:focus {
+		color: var(--oranges-1100);
+		border-color: var(--oranges-1100);
+		background-color: var(--oranges-100);
+	}
+
+	a::after {
+		content: unset;
+	}
+</style>

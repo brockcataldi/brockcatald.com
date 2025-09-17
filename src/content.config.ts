@@ -13,6 +13,12 @@ const articles = defineCollection({
 		}),
 });
 
+const linkSchema = z.object({
+	icon: z.string(),
+	href: z.string().url(),
+	text: z.string(),
+});
+
 const work = defineCollection({
 	loader: glob({ base: './src/content/work', pattern: '**/*.{md,mdx}' }),
 	schema: () =>
@@ -23,7 +29,8 @@ const work = defineCollection({
 			datePublish: z.coerce.date(),
 			dateUpdate: z.coerce.date().optional(),
 			imageHero: z.string(),
-			imageListing: z.string()
+			imageListing: z.string(),
+			links: z.array(linkSchema).optional(),
 		}),
 });
 

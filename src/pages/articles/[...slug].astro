@@ -15,7 +15,7 @@ type Props = CollectionEntry<'articles'>;
 const post = Astro.props;
 const { Content } = await render(post);
 
-const rt = (post.body) ? readingTime(post.body).text : undefined
+const rt = post.body ? readingTime(post.body).text : undefined;
 ---
 
 <SinglePost {...post.data} readingTime={rt}>

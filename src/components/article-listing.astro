@@ -1,5 +1,8 @@
 ---
-import ArticleMeta from './article-meta.astro';
+import FormattedDate from './date.astro';
+
+import CalendarIcon from '../assets/icons/calendar.svg';
+import ClockIcon from '../assets/icons/clock.svg';
 
 interface Props {
 	href: string;
@@ -16,7 +19,22 @@ const { href, title, description, publishDate, readingTime } = Astro.props;
 	<h3 class="article__title">{title}</h3>
 	<p>{description}</p>
 
-	<ArticleMeta publishDate={publishDate} readingTime={readingTime} />
+	<ul>
+		<li>
+			<CalendarIcon />
+			<p>
+				<FormattedDate date={publishDate} />
+			</p>
+		</li>
+		{
+			readingTime ? (
+				<li>
+					<ClockIcon />
+					<p>{readingTime}</p>
+				</li>
+			) : null
+		}
+	</ul>
 </a>
 
 <style>
@@ -56,12 +74,50 @@ const { href, title, description, publishDate, readingTime } = Astro.props;
 		background-color: var(--oranges-100);
 		color: var(--oranges-1100);
 	}
-</style>
 
-<style is:global>
-	a:hover .article__meta li,
-	a:focus .article__meta li {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: row;
+		gap: var(--space-s);
+	}
+
+	li {
+		margin: 0;
+		width: fit-content;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: row;
+		gap: var(--space-2xs);
+		box-sizing: border-box;
+		padding: var(--space-3xs) var(--space-s);
+		border-radius: var(--space-m);
+		background-color: var(--neutrals-200);
+		line-height: 1;
+		border: 1px solid var(--neutrals-200);
+		transition:
+			200ms border-color ease-in-out,
+			200ms color ease-in-out,
+			200ms background-color ease-in-out;
+	}
+	a:hover li,
+	a:focus li {
 		border-color: var(--oranges-1100);
 		background-color: var(--oranges-200);
+	}
+	p {
+		width: fit-content;
+		font-size: var(--step--1);
+		margin: 0;
+	}
+
+	svg {
+		width: 16px;
+		height: auto;
 	}
 </style>

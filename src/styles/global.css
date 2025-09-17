@@ -53,6 +53,7 @@
 	--space-5xl: clamp(10rem, 9.4886rem + 2.2727vw, 11.25rem);
 	--space-6xl: clamp(12rem, 11.3864rem + 2.7273vw, 13.5rem);
 
+	--hero: 33.75rem;
 	--max-inner: 47.25rem;
 	--max-outer: 63rem;
 }
