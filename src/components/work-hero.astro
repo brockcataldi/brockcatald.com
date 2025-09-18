@@ -7,17 +7,19 @@ type Link = {
 	icon: string;
 	href: string;
 	text: string;
-};
+}
 
 interface Props {
 	title: string;
 	publishDate: Date;
 	image: string;
 	subtitle?: string;
-	links?: Link[];
+	links?: Link[]
 }
 
-const { publishDate, title, subtitle, image, links } = Astro.props;
+const { 
+	publishDate, title, subtitle, image, links 
+} = Astro.props;
 ---
 
 <header>
@@ -27,21 +29,11 @@ const { publishDate, title, subtitle, image, links } = Astro.props;
 		<ArticleMeta publishDate={publishDate} />
 	</div>
 	<ul>
-		{
-			links?.map((link) => (
-				<li>
-					<ButtonIcon
-						icon={link.icon}
-						text={link.text}
-						href={link.href}
-					/>
-				</li>
-			))
-		}
+		{links?.map((link) => <li><ButtonIcon icon={link.icon} text={link.text} href={link.href} /></li>)}
 	</ul>
 	<picture>
-		<Image
-			src={image}
+		<Image 
+			src={image} 
 			alt={`${title} post image`}
 			inferSize={true}
 			loading={'eager'}
@@ -58,6 +50,7 @@ const { publishDate, title, subtitle, image, links } = Astro.props;
 		padding: var(--space-l);
 		box-sizing: border-box;
 		gap: var(--space-l);
+		margin-top: var(--space-l);
 	}
 
 	div {
@@ -74,7 +67,7 @@ const { publishDate, title, subtitle, image, links } = Astro.props;
 		z-index: 1;
 	}
 
-	ul {
+	ul{
 		padding: 0;
 		list-style-type: none;
 		flex-direction: row;
@@ -100,7 +93,7 @@ const { publishDate, title, subtitle, image, links } = Astro.props;
 		text-align: center;
 	}
 
-	picture {
+	picture{
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -111,17 +104,17 @@ const { publishDate, title, subtitle, image, links } = Astro.props;
 		z-index: 0;
 	}
 
-	picture::after {
+	picture::after{
 		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: rgba(0,0,0,0.75);
 	}
 
-	img {
+	img{
 		width: 100%;
 		height: 100%;
 		object-fit: cover;

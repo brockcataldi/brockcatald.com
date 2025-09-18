@@ -1,11 +1,11 @@
 ---
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
-import calendar from '../assets/icons/calendar.svg';
-import clock from '../assets/icons/clock.svg';
-import codepen from '../assets/icons/codepen.svg';
-import github from '../assets/icons/github.svg';
-import link from '../assets/icons/Link.svg';
-import linkedin from '../assets/icons/linkedin.svg';
+import calendar from '@/assets/icons/calendar.svg';
+import clock from '@/assets/icons/clock.svg';
+import codepen from '@/assets/icons/codepen.svg';
+import github from '@/assets/icons/github.svg';
+import link from '@/assets/icons/Link.svg';
+import linkedin from '@/assets/icons/linkedin.svg';
 
 const icons: { [key: string]: AstroComponentFactory } = {
 	calendar,
@@ -43,7 +43,7 @@ const Component = icons[icon] || link;
 		justify-content: center;
 		flex-direction: row;
 		gap: var(--space-xs);
-		padding: var(--space-2xs) var(--space-l);
+		padding: var(--space-2xs) var(--space-m);
 		border-radius: var(--space-m);
 		font-family: var(--font-heading);
 		letter-spacing: 1px;
